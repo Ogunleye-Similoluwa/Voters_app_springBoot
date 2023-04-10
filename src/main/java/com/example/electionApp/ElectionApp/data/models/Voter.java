@@ -25,5 +25,6 @@ public class Voter {
     private String occupation;
     private String email;
     private String phoneNumber;
+    private Party party;
 
     }
