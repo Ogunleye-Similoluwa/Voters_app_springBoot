@@ -7,7 +7,7 @@ import lombok.*;
 @Getter
 @Setter
 @Builder
-public class VoterRegisterResponse {
+public class RegisterResponse {
     private Long id;
     private String message;
     private boolean isSuccess;

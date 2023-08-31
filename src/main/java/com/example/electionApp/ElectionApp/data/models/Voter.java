@@ -1,9 +1,7 @@
 package com.example.electionApp.ElectionApp.data.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.example.electionApp.ElectionApp.data.dto.request.RegisterRequest;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,12 +17,25 @@ public class Voter {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
+    @OneToOne
+    private AppUser user;
+
     private String name;
+
     private int age;
+
     private String address;
+
     private String occupation;
-    private String email;
+
     private String phoneNumber;
+
+    @Enumerated(value = EnumType.STRING)
     private Party party;
+
+    public Voter(RegisterRequest request){
+        name = request.getName();
+       phoneNumber = request.getPhoneNumber();
+    }
 
     }

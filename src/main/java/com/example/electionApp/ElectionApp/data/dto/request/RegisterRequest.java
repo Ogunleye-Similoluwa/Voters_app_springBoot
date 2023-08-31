@@ -1,5 +1,6 @@
 package com.example.electionApp.ElectionApp.data.dto.request;
 
+import com.example.electionApp.ElectionApp.data.models.Role;
 import lombok.*;
 
 import jakarta.validation.constraints.Email;
@@ -14,7 +15,7 @@ import static com.example.electionApp.ElectionApp.util.AppUtil.EMAIL_REGEX_STRIN
 @Getter
 @Setter
 @Builder
-public class VotersRegisterRequest {
+public class RegisterRequest {
     @NotNull(message = "field name cannot be null")
     @NotEmpty(message = "field name cannot be empty")
     private String name;
@@ -24,6 +25,17 @@ public class VotersRegisterRequest {
     @NotNull(message = "field name cannot be null")
     @NotEmpty(message = "field name cannot be empty")
     private String phoneNumber;
+
+    @Size(min = 6, max = 11)
+    @NotNull(message = "field name cannot be null")
+    @NotEmpty(message = "field name cannot be empty")
+    private String password;
+
+
+
+    @NotNull(message = "field name cannot be null")
+    @NotEmpty(message = "field name cannot be empty")
+    private Role role;
 
     @NotNull(message = "field email cannot be null")
     @NotEmpty(message = "field email cannot be empty")
