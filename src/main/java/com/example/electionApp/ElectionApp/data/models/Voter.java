@@ -30,7 +30,7 @@ public class Voter {
 
     private String phoneNumber;
 
-    @Enumerated(value = EnumType.STRING)
+    @OneToOne
     private Party party;
 
     public Voter(RegisterRequest request){
