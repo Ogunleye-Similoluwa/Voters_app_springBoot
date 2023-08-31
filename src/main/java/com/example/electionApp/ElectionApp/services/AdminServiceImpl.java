@@ -33,7 +33,7 @@ public class AdminServiceImpl implements AdminService{
     }
 
     @Override
-    public PartyDto updateParty(Party party) {
+    public void updateParty(Party party) {
         return null;
     }
 
