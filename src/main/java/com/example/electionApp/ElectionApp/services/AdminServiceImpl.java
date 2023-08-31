@@ -34,7 +34,6 @@ public class AdminServiceImpl implements AdminService{
 
     @Override
     public void updateParty(Party party) {
-        return null;
     }
 
     @Override
