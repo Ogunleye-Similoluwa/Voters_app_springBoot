@@ -15,13 +15,14 @@ public interface AdminService {
 
    VoteDto createVote(CreateVoteDto vote);
 
-   PartyDto updateParty(Party party);
+   void updateParty(Party party);
 
    void deleteParty(Party party);
 
    List<PartyDto> viewAllParties();
 
    List<Vote> getAllVotes();
+
    List<Vote> getVoteByPartyId(Party party);
 
 }
