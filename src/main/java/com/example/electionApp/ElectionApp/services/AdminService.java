@@ -1,28 +1,31 @@
 package com.example.electionApp.ElectionApp.services;
 
 import com.example.electionApp.ElectionApp.data.dto.party.PartyDto;
+import com.example.electionApp.ElectionApp.data.dto.vote.CastVoteDto;
 import com.example.electionApp.ElectionApp.data.dto.vote.CreateVoteDto;
-import com.example.electionApp.ElectionApp.data.dto.vote.VoteDto;
 import com.example.electionApp.ElectionApp.data.models.Party;
-import com.example.electionApp.ElectionApp.data.models.Vote;
 
 import java.util.List;
+import java.util.Map;
 
 
 public interface AdminService {
 
    void createParty(PartyDto party);
 
-   VoteDto createVote(CreateVoteDto vote);
+   Map<String, String> createVote(CreateVoteDto vote);
 
-   void updateParty(Party party);
+   Map<String, String> updateParty(Party party);
 
-   void deleteParty(Party party);
+   Map<String, String> deleteParty(Party party);
+   PartyDto getPartyByPartyId(Party party);
 
    List<PartyDto> viewAllParties();
 
-   List<Vote> getAllVotes();
+   List<CastVoteDto> getAllVotes();
 
-   List<Vote> getVoteByPartyId(Party party);
+   List<CastVoteDto> getCastedVotesByPartyId(Party party);
+
+   List<CastVoteDto> getCastedVotesByPartyName(Party party);
 
 }
