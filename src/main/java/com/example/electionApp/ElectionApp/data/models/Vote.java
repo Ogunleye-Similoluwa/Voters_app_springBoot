@@ -1,9 +1,6 @@
 package com.example.electionApp.ElectionApp.data.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -31,5 +28,7 @@ public class Vote {
     private LocalDateTime voteEnd;
 
     private String verificationCode;
+    @Enumerated(value = EnumType.STRING)
+    private VoteStatus status;
 
 }

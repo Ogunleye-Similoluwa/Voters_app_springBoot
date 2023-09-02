@@ -6,15 +6,18 @@ import com.example.electionApp.ElectionApp.data.dto.vote.CreateVoteDto;
 import com.example.electionApp.ElectionApp.data.models.CastedVote;
 import com.example.electionApp.ElectionApp.data.models.Party;
 import com.example.electionApp.ElectionApp.data.models.Vote;
+import com.example.electionApp.ElectionApp.data.models.VoteStatus;
 import com.example.electionApp.ElectionApp.data.repositories.CastedVoteRepository;
 import com.example.electionApp.ElectionApp.data.repositories.PartyRepository;
 import com.example.electionApp.ElectionApp.exception.PartyException;
+import com.example.electionApp.ElectionApp.exception.VoterException;
 import com.example.electionApp.ElectionApp.util.CastedVoteUtils;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.*;
 
 @Service
@@ -42,6 +45,12 @@ public class AdminServiceImpl implements AdminService{
         Vote vote  = new Vote();
         vote.setVoteStart(createVote.getVoteStart());
         vote.setVoteEnd(createVote.getVoteEnd());
+        if(!Objects.equals(vote.getVoteStart(), LocalDateTime.now())){
+            vote.setStatus(VoteStatus.NOT_STARTED);
+        }
+        else if(Objects.equals(vote.getVoteStart(), LocalDateTime.now())){
+            throw new VoterException("You can't create a vote that starts now");
+        }
         String verificationCode = RandomStringUtils.random(8,true,true);
         vote.setVerificationCode(verificationCode);
         Map<String,String> response = new HashMap<>();

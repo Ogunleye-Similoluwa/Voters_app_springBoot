@@ -9,7 +9,8 @@ import java.util.List;
 public interface CastedVoteRepository extends JpaRepository<CastedVote, Long> {
 
     CastedVote getCastedVoteById(Long id);
-
+    CastedVote getCastedVoteByPartyName(String partyName);
+    CastedVote getCastedVoteByUserId (Long userId);
     List<CastedVote> getAllByPartyName(String partyName);
 
     List<CastedVote> getAll();

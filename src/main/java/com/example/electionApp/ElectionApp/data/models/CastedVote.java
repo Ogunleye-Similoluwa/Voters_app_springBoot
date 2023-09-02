@@ -22,7 +22,8 @@ public class CastedVote {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private  Long id;
-
+    @OneToOne
+    private AppUser user;
 
     private String partyName;
     @OneToOne
@@ -37,11 +38,9 @@ public class CastedVote {
 
     public CastedVote(CastVoteDto castVoteDto){
         partyName = castVoteDto.getPartyName();
-        vote = castVoteDto.getVote();
         timeCast = castVoteDto.getTimeCast();
         votingDistrict = castVoteDto.getVotingDistrict();
         verificationCode = castVoteDto.getVerificationCode();
-
 
     }
 

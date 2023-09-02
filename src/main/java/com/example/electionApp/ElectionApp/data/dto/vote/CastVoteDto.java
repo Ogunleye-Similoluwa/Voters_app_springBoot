@@ -21,7 +21,6 @@ import java.util.Date;
 public class CastVoteDto {
     private  Long id;
     private String partyName;
-    private Vote vote;
     @UpdateTimestamp
     private LocalDateTime timeCast;
     private String votingDistrict;
@@ -29,7 +28,6 @@ public class CastVoteDto {
 
         public CastVoteDto(CastedVote castVote) {
             partyName = castVote.getPartyName();
-            vote = castVote.getVote();
             timeCast = castVote.getTimeCast();
             votingDistrict = castVote.getVotingDistrict();
             verificationCode = castVote.getVerificationCode();

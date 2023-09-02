@@ -1,12 +1,11 @@
 package com.example.electionApp.ElectionApp.services;
 
 import com.example.electionApp.ElectionApp.data.dto.candidate.CandidateDto;
-import com.example.electionApp.ElectionApp.data.dto.vote.VoteDto;
+import com.example.electionApp.ElectionApp.data.dto.vote.CastVoteDto;
 import com.example.electionApp.ElectionApp.data.models.Candidate;
-import com.example.electionApp.ElectionApp.data.models.Party;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
 
@@ -15,19 +14,22 @@ public interface CandidateService {
 
     Map<String, String>joinAParty(Long partyId, Long candidateId);
 
-    VoteDto trackAPartyVote(Long partyId);
+    List<CastVoteDto> getCastedVotesByPartyName(String partyName);
 
-    VoteDto trackAllPartyVote();
+    Map<String, String> getVotingResultByPartyName(String partyName);
+    List<CastVoteDto> getAllVotes();
+    List<CastVoteDto> getCastedVotesByPartyId(Long partyId);
 
-    Long getVotingResult(Long voteId, Long partyId);
+    CastVoteDto getCastVoteByUserId(Long userId);
 
     List<CandidateDto> getAllCandidates();
 
-    CandidateDto getOneCandidate (Long candidateId);
+    CandidateDto getACandidate (Long candidateId);
 
-    Date getElectionDate();
 
-    Candidate updateCandidate (Long candidateId);
+    Candidate updateCandidateInfo (Long candidateId);
+
+    Map<String,String> castVote(CastVoteDto voteDto);
 
 
 }

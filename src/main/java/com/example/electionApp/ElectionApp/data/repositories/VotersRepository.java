@@ -10,5 +10,7 @@ public interface VotersRepository extends JpaRepository<Voter,Long> {
 //    @Override
 //    Optional<Voter> findById(Long aLong);
 
+    Voter getVoterByUserId(Long userId);
+
     Optional<Voter> findByEmail(String email);
 }
