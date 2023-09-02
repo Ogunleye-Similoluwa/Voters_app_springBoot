@@ -12,6 +12,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @AllArgsConstructor
@@ -25,9 +26,9 @@ public class Vote {
     private  Long id;
 
 
-    private LocalDate voteStart;
+    private LocalDateTime voteStart;
 
-    private LocalDate voteEnd;
+    private LocalDateTime voteEnd;
 
     private String verificationCode;
 

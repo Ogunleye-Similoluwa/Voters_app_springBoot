@@ -7,6 +7,7 @@ import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @AllArgsConstructor
@@ -16,7 +17,7 @@ import java.util.Date;
 public class CreateVoteDto {
 
     private  Long id;
-    private Date voteStart;
-    private Date voteEnd;
+    private LocalDateTime voteStart;
+    private LocalDateTime voteEnd;
     private String verificationCode;
 }
