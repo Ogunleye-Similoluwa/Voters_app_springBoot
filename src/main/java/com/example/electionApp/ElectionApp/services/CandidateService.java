@@ -2,10 +2,8 @@ package com.example.electionApp.ElectionApp.services;
 
 import com.example.electionApp.ElectionApp.data.dto.candidate.CandidateDto;
 import com.example.electionApp.ElectionApp.data.dto.vote.CastVoteDto;
-import com.example.electionApp.ElectionApp.data.models.Candidate;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
 
@@ -26,8 +24,7 @@ public interface CandidateService {
 
     CandidateDto getACandidate (Long candidateId);
 
-
-    Candidate updateCandidateInfo (Long candidateId);
+    Map<String, String> updateCandidateInfo (Long candidateId, CandidateDto dto);
 
     Map<String,String> castVote(CastVoteDto voteDto);
 

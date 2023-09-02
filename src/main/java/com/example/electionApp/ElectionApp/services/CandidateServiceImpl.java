@@ -169,8 +169,20 @@ public class CandidateServiceImpl implements CandidateService{
 
 
     @Override
-    public Candidate updateCandidateInfo(Long candidateId) {
-        return null;
+    public Map<String, String> updateCandidateInfo(Long candidateId, CandidateDto candidate) {
+        Candidate  candidate1 = candidateUtil.getCandidateById(candidateId);
+        candidate1.setFirstName(candidate.getFirstName());
+        candidate1.setLastName(candidate.getLastName());
+        candidate1.setPosition(candidate.getPosition());
+
+        CandidateDto candidateDto = new CandidateDto();
+        candidateDto.setFirstName(candidate1.getFirstName());
+        candidateDto.setLastName(candidate1.getLastName());
+        candidateDto.setPartyName(candidate1.getParty().getName());
+        candidateDto.setPosition(candidate1.getPosition());
+        Map<String,String> response = new HashMap<>();
+        response.put("Details:","Successfully updated your info");
+        return response;
     }
 
     private void checkIfCastedVoteInitially(CastVoteDto castVoteDto){
