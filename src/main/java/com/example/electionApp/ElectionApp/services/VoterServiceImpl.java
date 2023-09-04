@@ -36,7 +36,7 @@ public class VoterServiceImpl implements VoterService {
 
         RegisterResponse response = new RegisterResponse();
         response.setSuccess(true);
-        response.setMessage("Voters registered successfully "+ voter.getName());
+        response.setMessage("Voter registered successfully "+ voter.getName());
         response.setId(voter.getId());
         return response;
 

@@ -22,7 +22,7 @@ public class Voter {
 
     private String name;
 
-    private int age;
+    private int ag;
 
     private String address;
 

@@ -1,29 +1,24 @@
 package com.example.electionApp.ElectionApp.services;
 
 import com.example.electionApp.ElectionApp.data.dto.candidate.CandidateDto;
-import com.example.electionApp.ElectionApp.data.models.Party;
 
 import java.util.List;
+import java.util.Map;
 
 public class PartyServiceImpl implements PartyService{
 
+
+
     @Override
-    public Party updateParty(Party party) {
+    public Map<String, String> removeCandidate(CandidateDto candidate) {
+
+
         return null;
     }
 
-    @Override
-    public CandidateDto removeCandidate(CandidateDto candidate) {
-        return null;
-    }
 
     @Override
-    public List<Party> viewAllParties() {
-        return null;
-    }
-
-    @Override
-    public CandidateDto viewCandidateInfo(CandidateDto candidate) {
+    public CandidateDto viewCandidateInfoInAParty(Long  candidateId) {
         return null;
     }
 
@@ -33,7 +28,7 @@ public class PartyServiceImpl implements PartyService{
     }
 
     @Override
-    public void addCandidate(CandidateDto candidate) {
+    public Map<String, String> addCandidate(CandidateDto candidate) {
 
     }
 }
