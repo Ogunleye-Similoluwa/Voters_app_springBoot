@@ -1,16 +1,15 @@
 package com.example.electionApp.ElectionApp.services;
 
+import com.example.electionApp.ElectionApp.data.dto.candidate.CandidateDto;
 import com.example.electionApp.ElectionApp.data.dto.party.PartyDto;
 import com.example.electionApp.ElectionApp.data.dto.vote.CastVoteDto;
 import com.example.electionApp.ElectionApp.data.dto.vote.CreateVoteDto;
-import com.example.electionApp.ElectionApp.data.models.CastedVote;
-import com.example.electionApp.ElectionApp.data.models.Party;
-import com.example.electionApp.ElectionApp.data.models.Vote;
-import com.example.electionApp.ElectionApp.data.models.VoteStatus;
+import com.example.electionApp.ElectionApp.data.models.*;
 import com.example.electionApp.ElectionApp.data.repositories.CastedVoteRepository;
 import com.example.electionApp.ElectionApp.data.repositories.PartyRepository;
 import com.example.electionApp.ElectionApp.exception.PartyException;
 import com.example.electionApp.ElectionApp.exception.VoterException;
+import com.example.electionApp.ElectionApp.util.CandidateUtil;
 import com.example.electionApp.ElectionApp.util.CastedVoteUtils;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +30,9 @@ public class AdminServiceImpl implements AdminService{
 
     @Autowired
     CastedVoteUtils castedVoteUtils;
+
+    @Autowired
+    CandidateUtil candidateUtil;
     @Override
     public void createParty(PartyDto partyDto) {
         Party party = new Party();
@@ -70,14 +72,14 @@ public class AdminServiceImpl implements AdminService{
     }
 
     @Override
-    public PartyDto getPartyByPartyId(Party party) {
-        Party party1 = partyRepository.getPartyById(party.getId());
+    public PartyDto getPartyByPartyId(Long partyId) {
+        Party party1 = partyRepository.getPartyById(partyId);
         if (party1 != null) {
             PartyDto partyDto = new PartyDto(party1);
             return partyDto;
         }
         else {
-           throw new PartyException("Could not find party with id : " + party) ;
+           throw new PartyException("Could not find party with id : " + partyId) ;
         }
     }
 
@@ -126,4 +128,27 @@ public class AdminServiceImpl implements AdminService{
                 .toList();
         return castVoteDtos;
     }
+
+    @Override
+    public Map<String, String> removeCandidateFromAParty(Long candidateId,Long partyId) {
+        Party party1 = partyRepository.getPartyById(partyId);
+        Candidate  candidate = candidateUtil.getCandidateById(candidateId);
+        party1.getCandidates().removeIf(candidate1 -> Objects.equals(candidate1.getId(), candidate.getId()));
+        Map<String,String> response = new HashMap<>();
+        response.put("Details:","Successfully removed candidate from : " + party1.getName());
+        return response;
+
+    }
+    @Override
+    public Map<String, String> addCandidateToAParty(Long candidateId,Long partyId) {
+        Party party1 = partyRepository.getPartyById(partyId);
+        Candidate candidate = candidateUtil.getCandidateById(candidateId);
+        party1.getCandidates().add(candidate);
+        Map<String,String> response = new HashMap<>();
+        response.put("Details:","Successfully Added candidate to : " + party1.getName());
+        return response;
+
+    }
+
+
 }

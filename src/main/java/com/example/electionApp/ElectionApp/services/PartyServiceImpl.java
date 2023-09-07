@@ -9,12 +9,7 @@ public class PartyServiceImpl implements PartyService{
 
 
 
-    @Override
-    public Map<String, String> removeCandidate(CandidateDto candidate) {
 
-
-        return null;
-    }
 
 
     @Override
@@ -27,8 +22,5 @@ public class PartyServiceImpl implements PartyService{
         return null;
     }
 
-    @Override
-    public Map<String, String> addCandidate(CandidateDto candidate) {
 
-    }
 }

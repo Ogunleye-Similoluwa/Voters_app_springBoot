@@ -22,7 +22,7 @@ public class Voter {
 
     private String name;
 
-    private int ag;
+    private int age;
 
     private String address;
 
@@ -30,12 +30,11 @@ public class Voter {
 
     private String phoneNumber;
 
+    private String email;
+
     @OneToOne
     private Party party;
 
-    public Voter(RegisterRequest request){
-        name = request.getName();
-       phoneNumber = request.getPhoneNumber();
-    }
+
 
     }

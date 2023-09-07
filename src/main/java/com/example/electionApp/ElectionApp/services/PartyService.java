@@ -9,13 +9,12 @@ import java.util.Map;
 public interface PartyService {
 
 
-    Map<String, String> removeCandidate(CandidateDto candidate);
 
 
     CandidateDto viewCandidateInfoInAParty(Long candidateId);
 
     List<CandidateDto> getCandidatesInAPartyByPartyId(Long partyId);
 
-    Map<String, String> addCandidate(CandidateDto candidate);
+
 
 }

@@ -1,5 +1,6 @@
 package com.example.electionApp.ElectionApp.services;
 
+import com.example.electionApp.ElectionApp.data.dto.candidate.CandidateDto;
 import com.example.electionApp.ElectionApp.data.dto.party.PartyDto;
 import com.example.electionApp.ElectionApp.data.dto.vote.CastVoteDto;
 import com.example.electionApp.ElectionApp.data.dto.vote.CreateVoteDto;
@@ -18,7 +19,7 @@ public interface AdminService {
    Map<String, String> updateParty(Party party);
 
    Map<String, String> deleteParty(Party party);
-   PartyDto getPartyByPartyId(Party party);
+   PartyDto getPartyByPartyId(Long partyId);
 
    List<PartyDto> viewAllParties();
 
@@ -27,5 +28,9 @@ public interface AdminService {
    List<CastVoteDto> getCastedVotesByPartyId(Party party);
 
    List<CastVoteDto> getCastedVotesByPartyName(Party party);
+
+   Map<String, String> removeCandidateFromAParty(Long candidateId,Long partyId);
+
+   Map<String, String> addCandidateToAParty(Long candidateId,Long partyId);
 
 }
